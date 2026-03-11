@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 # Load the machine learning model and encode
-model = joblib.load('artifacts/churn_prediction_pipeline.pkl')
+model = joblib.load('churn_prediction_pipeline.pkl')
 
 
 def main():
@@ -40,6 +40,7 @@ def main():
     
     if st.button("Make Prediction"):
         prediction = model.predict(df)[0]
+        prediction = "Churn" if prediction == 1 else "Not Churn"
         st.success(f"Churn Prediction: {prediction}")
 
 
